@@ -12,3 +12,12 @@ CREATE TABLE tb_saque(
     horario TIME,
     FOREIGN KEY (usuario_id) REFERENCES tb_usuario(id)
 );
+
+CREATE TABLE tb_caixa_eletronico(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    notas100 BIGINT NOT NULL,
+    notas50 BIGINT NOT NULL,
+    notas20 BIGINT NOT NULL,
+    notas10 BIGINT NOT NULL,
+    valor_total DECIMAL NOT NULL
+);
