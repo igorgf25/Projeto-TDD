@@ -33,8 +33,7 @@ public class Usuario implements UserDetails {
     )
     private List<Role> roles;
 
-    @OneToOne
-    @JoinColumn(name = "usuario_id")
+    @OneToOne(mappedBy = "usuario")
     private Conta conta;
 
     @OneToMany

@@ -11,8 +11,7 @@ public class MainController {
 
     @RequestMapping
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("usuario/saque.html");
-        mv.addObject("saque", new Saque());
+        ModelAndView mv = new ModelAndView("index.html");
         return mv;
     }
 

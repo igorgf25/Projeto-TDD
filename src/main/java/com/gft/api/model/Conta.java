@@ -8,17 +8,18 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "tb_conta")
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tb_conta")
 public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long usuario_id;
-
     private Double saldo;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }
 

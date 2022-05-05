@@ -15,5 +15,4 @@ CREATE TABLE tb_user_role (
     role_id BIGINT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES tb_usuario(id),
     FOREIGN KEY (role_id) REFERENCES tb_role(id)
-
 )

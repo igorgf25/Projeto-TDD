@@ -23,4 +23,7 @@ public class Saque {
 
     private LocalTime horario;
 
+    public Saque(Double valor) {
+        this.valor = valor;
+    }
 }

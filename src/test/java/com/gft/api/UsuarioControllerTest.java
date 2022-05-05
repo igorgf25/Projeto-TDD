@@ -1,6 +1,5 @@
 package com.gft.api;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gft.api.model.Saque;
 import org.junit.jupiter.api.Test;
@@ -9,12 +8,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class usuarioControllerTest {
+public class UsuarioControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -31,6 +30,12 @@ public class usuarioControllerTest {
         mockMvc.perform(post("/usuario/saque")
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(saque)))
-                .andExpect(status().isOk());
+                .andExpect(status().isFound());
+    }
+
+    @Test
+    public void usuarioTestGetPaginaSaque() throws Exception {
+        mockMvc.perform(get("/usuario/saque"))
+                .andExpect(status().isFound());
     }
 }
