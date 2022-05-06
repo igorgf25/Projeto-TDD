@@ -5,7 +5,26 @@
 >
 <meta charset="UTF-8">
 <div layout:fragment="content">
+    <div class="container d-flex bg-light"
+         style="border-radius: 10px; margin-top:80px; height: 100px; width: 600px; justify-content: center; align-items: center;">
+        <p th:text="'Saldo: R$ ' + ${#numbers.formatDecimal(usuario.conta.saldo, 0, 'POINT', 2, 'COMMA')}" style="font-size: 33px"></p>
+    </div>
 
+    <div class="container d-flex bg-light "
+         style="border-radius: 10px; margin-top: 50px; width: 600px; justify-content: center; align-items: center; flex-direction: column"
+         th:if="${not #lists.isEmpty(usuario.saques)}">
+
+        <h1 style="padding-top: 10px; padding-bottom: 10px;">Extrato</h1>
+
+        <div class="d-flex align-items-center justify-content-evenly"
+             style="background-color: white; padding: 5px; border-radius: 10px; margin-top: 5px; margin-bottom: 5px; width: 400px;"
+             th:each="saque : ${usuario.saques}">
+            <p th:text="'Valor: R$ ' + ${#numbers.formatDecimal(saque.valor, 0, 'POINT', 2, 'COMMA')}"></p>
+            <p th:text="'Horario: ' + ${saque.horario}"></p>
+        </div>
+
+        <div style="height: 20px"></div>
+    </div>
 </div>
 
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"
+>
+<meta charset="UTF-8">
+<div layout:fragment="content">
+    <div class="container d-flex bg-light "
+         style="border-radius: 10px; margin-top: 80px; width: 600px; justify-content: center; align-items: center; flex-direction: column">
+
+        <h1 style="padding-top: 10px; padding-bottom: 10px;">Valores Caixa Eletronico</h1>
+
+        <div class="d-flex align-items-center justify-content-evenly"
+             style="background-color: white; padding: 5px; border-radius: 10px; margin-top: 5px; margin-bottom: 5px; width: 400px;">
+            <p th:text="'Notas de R$100,00: ' + ${caixa.notas100}"></p>
+        </div>
+        <div class="d-flex align-items-center justify-content-evenly"
+             style="background-color: white; padding: 5px; border-radius: 10px; margin-top: 5px; margin-bottom: 5px; width: 400px;">
+            <p th:text="'Notas de R$50,00: ' + ${caixa.notas50}"></p>
+        </div>
+        <div class="d-flex align-items-center justify-content-evenly"
+             style="background-color: white; padding: 5px; border-radius: 10px; margin-top: 5px; margin-bottom: 5px; width: 400px;">
+            <p th:text="'Notas de R$20,00: ' + ${caixa.notas20}"></p>
+        </div>
+        <div class="d-flex align-items-center justify-content-evenly"
+             style="background-color: white; padding: 5px; border-radius: 10px; margin-top: 5px; margin-bottom: 5px; width: 400px;">
+            <p th:text="'Notas de R$10,00: ' + ${caixa.notas10}"></p>
+        </div>
+        <div class="d-flex align-items-center justify-content-evenly"
+             style="background-color: white; padding: 5px; border-radius: 10px; margin-top: 10px; margin-bottom: 5px; width: 400px;">
+            <p th:text="'Valor Total: R$ ' + ${#numbers.formatDecimal(caixa.valor_total, 0, 'POINT', 2, 'COMMA')}"></p>
+        </div>
+
+        <div style="height: 20px"></div>
+    </div>
+</div>
+
+</html>

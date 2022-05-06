@@ -2,6 +2,7 @@ package com.gft.api.controller;
 
 import com.gft.api.model.NotasSaque;
 import com.gft.api.model.Saque;
+import com.gft.api.service.CaixaEletronicoService;
 import com.gft.api.service.SaqueService;
 import com.gft.api.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
+
+    @Autowired
+    CaixaEletronicoService caixaService;
 
     @RequestMapping("saque")
     public ModelAndView paginaSaque() {
@@ -42,6 +46,15 @@ public class UsuarioController {
             redirectAttributes.addFlashAttribute("mensagem", "Erro ao realizar saque: "
                     + e.getMessage());
         }
+
+        return mv;
+    }
+
+    @RequestMapping("caixa")
+    public ModelAndView caixa() {
+        ModelAndView mv = new ModelAndView("admin/notasCaixa.html");
+
+        mv.addObject("caixa", caixaService.retornaCaixa());
 
         return mv;
     }

@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" th:href="@{/usuario/saque}">Saque</a>
                     </li>
+                    <li sec:authorize="hasAuthority('ROLE_ADMIN')" class="nav-item">
+                        <a class="nav-link active" th:href="@{/usuario/caixa}">Caixa Eletronico</a>
+                    </li>
                 </ul>
                 <a class="btn btn-outline-danger d-flex" data-bs-toggle="modal" data-bs-target="#exampleModal"
                    th:href="@{/logout}">Logout</a>
