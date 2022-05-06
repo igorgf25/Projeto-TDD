@@ -7,10 +7,13 @@ import com.gft.api.service.SaqueService;
 import com.gft.api.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("usuario")
@@ -30,13 +33,12 @@ public class UsuarioController {
         ModelAndView mv = new ModelAndView("usuario/saque.html");
         mv.addObject("saque", new Saque());
         mv.addObject("conta", usuarioService.buscarUsuarioLogado().getConta());
-        System.out.println(usuarioService.buscarUsuarioLogado().getSaques());
 
         return mv;
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "saque")
-    public ModelAndView saque(Saque saque, RedirectAttributes redirectAttributes) {
+    public ModelAndView saque( Saque saque, RedirectAttributes redirectAttributes) {
         ModelAndView mv = new ModelAndView("redirect:/usuario/saque");
 
         try {

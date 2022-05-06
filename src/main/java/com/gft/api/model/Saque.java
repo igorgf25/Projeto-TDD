@@ -5,13 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import java.math.BigDecimal;
 import java.time.LocalTime;
 
 @Entity
 @Data
-@Table(name = "tb_saque")
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tb_saque")
 public class Saque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +21,12 @@ public class Saque {
 
     private Long usuario_id;
 
-    private Double valor;
+    private BigDecimal valor;
 
     private LocalTime horario;
 
-    public Saque(Double valor) {
+    public Saque(BigDecimal valor) {
         this.valor = valor;
     }
 }
+

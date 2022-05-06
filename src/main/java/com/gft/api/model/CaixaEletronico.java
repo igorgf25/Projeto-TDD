@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -25,6 +26,6 @@ public class CaixaEletronico {
 
     private int notas10;
 
-    private double valor_total;
+    private BigDecimal valor_total;
 
 }

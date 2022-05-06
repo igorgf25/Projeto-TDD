@@ -1,4 +1,4 @@
-package com.gft.api;
+package com.gft.api.service;
 
 import com.gft.api.model.CaixaEletronico;
 import com.gft.api.model.NotasSaque;
@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -35,7 +37,7 @@ public class CaixaEletronicoServiceTest {
         when(caixaRepository.getById(1l))
                 .thenReturn(caixaEletronico);
 
-        CaixaEletronico resposta = caixaService.realizarSaque(notasSaque, 220d);
+        CaixaEletronico resposta = caixaService.realizarSaque(notasSaque, BigDecimal.valueOf(220d));
 
         assertEquals(9, resposta.getNotas100());
         assertEquals(8, resposta.getNotas50());
@@ -44,7 +46,7 @@ public class CaixaEletronicoServiceTest {
     }
 
     private void startObjects() {
-        caixaEletronico = new CaixaEletronico(1l, 10, 10, 10, 10, 1800);
+        caixaEletronico = new CaixaEletronico(1l, 10, 10, 10, 10, BigDecimal.valueOf(1800));
         notasSaque = new NotasSaque(1, 2, 1, 0);
     }
 

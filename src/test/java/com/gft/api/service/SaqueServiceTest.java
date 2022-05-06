@@ -1,4 +1,4 @@
-package com.gft.api;
+package com.gft.api.service;
 
 import com.gft.api.model.*;
 import com.gft.api.repository.SaqueRepository;
@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class SaqueServiceTest {
         when(saqueRepository.save(new Saque()))
                 .thenReturn(new Saque());
 
-        Saque saque = new Saque(110d);
+        Saque saque = new Saque(BigDecimal.valueOf(110.00));
         NotasSaque notas;
         try {
             notas = saqueService.realizarSaque(saque);
@@ -78,7 +79,7 @@ public class SaqueServiceTest {
         when(saqueRepository.save(new Saque()))
                 .thenReturn(new Saque());
 
-        Saque saque = new Saque(1700d);
+        Saque saque = new Saque(BigDecimal.valueOf(1700d));
         NotasSaque notas;
         try {
             notas = saqueService.realizarSaque(saque);
@@ -99,7 +100,7 @@ public class SaqueServiceTest {
         when(saqueRepository.save(new Saque()))
                 .thenReturn(new Saque());
 
-        Saque saque = new Saque(-1500d);
+        Saque saque = new Saque(BigDecimal.valueOf(-1500d));
         NotasSaque notas;
         try {
             notas = saqueService.realizarSaque(saque);
@@ -112,7 +113,7 @@ public class SaqueServiceTest {
     @Test
     public void saqueServiceTestRetornaErroValorMaiorQueCaixa() {
         when(caixaService.retornaCaixa())
-                .thenReturn(new CaixaEletronico(1l, 10, 10, 10, 10, 1000));
+                .thenReturn(new CaixaEletronico(1l, 10, 10, 10, 10, BigDecimal.valueOf(1000)));
 
         when(usuarioService.buscarUsuarioLogado())
                 .thenReturn(usuario);
@@ -120,7 +121,7 @@ public class SaqueServiceTest {
         when(saqueRepository.save(new Saque()))
                 .thenReturn(new Saque());
 
-        Saque saque = new Saque(1500d);
+        Saque saque = new Saque(BigDecimal.valueOf(1500d));
         NotasSaque notas;
         try {
             notas = saqueService.realizarSaque(saque);
@@ -141,7 +142,7 @@ public class SaqueServiceTest {
         when(saqueRepository.save(new Saque()))
                 .thenReturn(new Saque());
 
-        Saque saque = new Saque(1005d);
+        Saque saque = new Saque(BigDecimal.valueOf(1005d));
         NotasSaque notas;
         try {
             notas = saqueService.realizarSaque(saque);
@@ -152,8 +153,8 @@ public class SaqueServiceTest {
     }
 
     private void startObjects() {
-        caixaEletronico = new CaixaEletronico(1l, 10, 10, 10, 10, 1800);
+        caixaEletronico = new CaixaEletronico(1l, 10, 10, 10, 10, BigDecimal.valueOf(1800));
 
-        usuario = new Usuario(1l, "igor", "User", "Teste", List.of(new Role(1l, "ROLE_USER")), new Conta(1l, 1600d, new Usuario()), new ArrayList<>());
+        usuario = new Usuario(1l, "igor", "User", "Teste", List.of(new Role(1l, "ROLE_USER")), new Conta(1l, BigDecimal.valueOf(1600d), new Usuario()), new ArrayList<>());
     }
 }
