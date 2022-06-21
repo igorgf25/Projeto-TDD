@@ -1,7 +1,7 @@
 
-# Desafio TDD
+# Projeto TDD
 
-Projeto desenvolvido com base nas instruções passadas pelos instrutores e utilizando o conceito de TDD.
+Projeto desenvolvido para estudos utilizando o conceito de TDD.
 
 ## Utilização
 
